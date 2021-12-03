@@ -1,10 +1,11 @@
+import { Banner, NavBar } from "../../components";
 import "./HomeScreen.css";
-import { Navbar } from "../../components/Navbar";
 
 export const HomeScreen = () => {
   return (
     <div className="homeScreen">
-      <Navbar />
+      <NavBar />
+      <Banner />
     </div>
   );
 };

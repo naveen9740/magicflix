@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 
-export const Navbar = () => {
+export const NavBar = () => {
   const [show, handleShow] = useState(false);
-  console.log(window.scrollY);
   const transitionNavBar = () => {
     if (window.scrollY > 100) {
       handleShow(true);
@@ -14,7 +13,6 @@ export const Navbar = () => {
     window.addEventListener("scroll", transitionNavBar);
     return () => window.removeEventListener("scroll", transitionNavBar);
   }, []);
-  console.log(show);
 
   return (
     <div className={`nav ${show && `nav_black`}`}>
