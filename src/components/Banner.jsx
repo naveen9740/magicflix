@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import { useAuthContext } from "../authContext";
 import { instance } from "../config/axios";
 import { requests } from "../config/Requests";
 
 export const Banner = () => {
   const [movie, setMovie] = useState([]);
+  const navigate = useNavigate();
+  const { setMovieInfo } = useAuthContext();
   useEffect(() => {
     const fetchData = async () => {
       const req = await instance.get(requests.fetchNetflixOriginals);
@@ -33,7 +37,23 @@ export const Banner = () => {
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
         <div className="banner_buttons">
-          <button className="banner_button">Play</button>
+          <button
+            onClick={() => {
+              navigate(
+                `/movie/${
+                  movie?.name || movie?.original_title || movie?.original_name
+                }`
+              );
+              setMovieInfo({
+                overview: movie?.overview,
+                lang: movie?.original_language,
+                date: movie?.first_air_date,
+              });
+            }}
+            className="banner_button"
+          >
+            Play
+          </button>
           <button className="banner_button">My List</button>
         </div>
         <h1 className="banner_desc">{truncate(movie?.overview, 150)}</h1>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 export const NavBar = () => {
   const [show, handleShow] = useState(false);
@@ -26,7 +26,7 @@ export const NavBar = () => {
         <img
           onClick={() => navigate("/profile")}
           className="nav_avatar"
-          src="https://pbs.twimg.com/media/DlKNEufWsAAgr2E.jpg"
+          src="https://cdn.imgbin.com/6/25/24/imgbin-user-profile-computer-icons-user-interface-mystique-aBhn3R8cmqmP4ECky4DA3V88y.jpg  "
           alt=""
         />
       </div>

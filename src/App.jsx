@@ -6,15 +6,15 @@ import { useEffect } from "react";
 import { auth } from "./firebase";
 import { useAuthContext } from "./authContext";
 import { Profile } from "./pages/Profile/Profile";
+import { SingleFilm } from "./pages/SingleFilm/SingleFilm";
+import { NotFound } from "./components";
 
 const App = () => {
   const { user, dispatch } = useAuthContext();
-  console.log({ user });
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
-        console.log("entering 22");
         dispatch({
           type: "Login",
           payload: { uid: userAuth.uid, email: userAuth.email },
@@ -33,6 +33,8 @@ const App = () => {
       <Routes>
         <Route path="/profile" element={user ? <Profile /> : <Login />} />
         <Route path="/" element={user ? <HomeScreen /> : <Login />} />
+        <Route path="/movie/:name" element={<SingleFilm />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
