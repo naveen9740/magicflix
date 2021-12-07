@@ -9,12 +9,10 @@ import { Profile } from "./pages/Profile/Profile";
 
 const App = () => {
   const { user, dispatch } = useAuthContext();
-  console.log({ user });
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
-        console.log("entering 22");
         dispatch({
           type: "Login",
           payload: { uid: userAuth.uid, email: userAuth.email },

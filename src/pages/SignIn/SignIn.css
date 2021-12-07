@@ -42,3 +42,14 @@
   text-decoration: underline;
   cursor: pointer;
 }
+.signIn_popup {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  margin-top: 5%;
+  color: white;
+  background-color: #e50914;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  bottom: -60px;
+}

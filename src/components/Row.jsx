@@ -8,6 +8,7 @@ export const Row = ({ title, fetchUrl, isLargeRow = false }) => {
     const fetchData = async () => {
       const request = await instance.get(fetchUrl);
       setMovies(request.data.results);
+
       return request;
     };
     fetchData();

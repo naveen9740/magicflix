@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useAuthContext } from "../../authContext";
 import {
   auth,
   createUserWithEmailAndPassword,
@@ -9,6 +10,7 @@ import "./SignIn.css";
 export const SignIn = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const { popup, setPopup } = useAuthContext();
 
   const register = (e) => {
     e.preventDefault();
@@ -22,13 +24,17 @@ export const SignIn = () => {
   };
   const signIn = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(
-      auth,
-      emailRef.current.value,
-      passwordRef.current.value
-    )
-      .then((userAuth) => console.log(userAuth))
-      .catch((err) => alert(err.message));
+    setPopup(true);
+    setTimeout(() => {
+      signInWithEmailAndPassword(
+        auth,
+        emailRef.current.value,
+        passwordRef.current.value
+      )
+        .then((userAuth) => console.log(userAuth))
+        .catch((err) => alert(err.message));
+      setPopup(false);
+    }, 2000);
   };
   return (
     <div className="signIn">
@@ -46,6 +52,7 @@ export const SignIn = () => {
           </span>
         </h4>
       </form>
+      {popup && <span className="signIn_popup">Log In Success!</span>}
     </div>
   );
 };
