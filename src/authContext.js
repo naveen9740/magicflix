@@ -14,9 +14,19 @@ export const AuthContext = ({ children }) => {
   };
   const [state, dispatch] = useReducer(reducerFxn, { user: null });
   const [popup, setPopup] = useState(false);
+  const [movieInfo, setMovieInfo] = useState();
 
   return (
-    <Context.Provider value={{ user: state.user, dispatch, popup, setPopup }}>
+    <Context.Provider
+      value={{
+        user: state.user,
+        dispatch,
+        popup,
+        setPopup,
+        movieInfo,
+        setMovieInfo,
+      }}
+    >
       {children}
     </Context.Provider>
   );

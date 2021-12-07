@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useAuthContext } from "../../authContext";
 import { NavBar } from "../../components";
