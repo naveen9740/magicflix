@@ -45,13 +45,22 @@ export const SignIn = () => {
         <button type="submit" onClick={signIn}>
           Sign In
         </button>
-        <h4>
-          <span className="signIn_gray">New to Magicflix? </span>
-          <span className="signIn_link" onClick={register}>
-            Sign Up Now
-          </span>
-        </h4>
       </form>
+      <button
+        className="autofillBtn"
+        onClick={() => {
+          emailRef.current.value = "admin@gmail.com";
+          passwordRef.current.value = "admin123";
+        }}
+      >
+        Autofill with Test Credentials
+      </button>
+      <h4>
+        <span className="signIn_gray">New to Magicflix? </span>
+        <span className="signIn_link" onClick={register}>
+          Sign Up Now
+        </span>
+      </h4>
       {popup && <span className="signIn_popup">Log In Success!</span>}
     </div>
   );
